@@ -1,0 +1,50 @@
+# Project: Project1
+# Makefile created by Red Panda C++ 2.21
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+RES      = Project1_private.res
+OBJ      = main.o showMenu.o teacher.o book.o libadmin.o student.o $(RES)
+LINKOBJ  = main.o showMenu.o teacher.o book.o libadmin.o student.o Project1_private.res
+CLEANOBJ  =  main.o showMenu.o teacher.o book.o libadmin.o student.o  Project1_private.res Project1.exe
+LIBS     = 
+INCS     =  
+CXXINCS  =  
+BIN      = Project1.exe
+CXXFLAGS = $(CXXINCS)  -g3 -pipe -Wall -D__DEBUG__
+CFLAGS   = $(INCS)  -g3 -pipe -Wall -D__DEBUG__
+RM       = del /q /f
+WINDRESFLAGS  = 
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	-$(RM) $(CLEANOBJ) > NUL 2>&1
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp showMenu.h teacher.h libadmin.h book.h student.h
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=gbk
+
+showMenu.o: showMenu.cpp showMenu.h book.h
+	$(CPP) -c showMenu.cpp -o showMenu.o $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=gbk
+
+teacher.o: teacher.cpp teacher.h
+	$(CPP) -c teacher.cpp -o teacher.o $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=gbk
+
+book.o: book.cpp showMenu.h book.h
+	$(CPP) -c book.cpp -o book.o $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=gbk
+
+libadmin.o: libadmin.cpp showMenu.h libadmin.h
+	$(CPP) -c libadmin.cpp -o libadmin.o $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=gbk
+
+student.o: student.cpp student.h
+	$(CPP) -c student.cpp -o student.o $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=gbk
+
+Project1_private.res: Project1_private.rc 
+	$(WINDRES) -i Project1_private.rc --input-format=rc -o Project1_private.res -O coff $(WINDRESFLAGS) 
+
