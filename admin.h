@@ -5,9 +5,4 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-int Studentlogin();
-void studentRegistration();
-int showstudentinfor();
-int deletestudent();
-int resetstudent();
-
+int adminlogin();

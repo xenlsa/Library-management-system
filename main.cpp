@@ -7,6 +7,7 @@
 #include"teacher.h"
 #include"book.h"
 #include"libadmin.h"
+#include"admin.h"
 using namespace std;
 int main()
 {
@@ -34,6 +35,7 @@ int main()
 					break;
 				}
 			}
+			break;
 		}
 		case 2://教师模块
 		{
@@ -43,7 +45,7 @@ int main()
 				{
 					if (teacherLogin() == 1)
 					{
-						showStudentMenu();
+						showStudentMenu();//直接调用学生菜单
 					}
 					break;
 				}
@@ -53,10 +55,17 @@ int main()
 					break;
 				}
 			}
+			break;
 		}
-		case 3:
+		case 3://图书管理员
 		{
-		 libadminlogin();
+			libadminlogin();
+			break;
+		}
+		case 4:
+		{
+			adminlogin();
+			break;
 		}
 	}
 	return 0;
